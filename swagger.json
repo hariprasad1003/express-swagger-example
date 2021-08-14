@@ -1,0 +1,99 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a eMaaS Express API project",
+        "version": "1.0.0",
+        "title": "eMaaS Express API"
+    },
+    "schemes": ["http"],
+    "host": "localhost:3002",
+    "basePath": "/api",
+    "paths": {
+        "/nameage": {
+            "post": {
+                "summary": "",
+                "description": "",
+                "produces": ["application/json"],
+                "consumes": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "name",
+                        "description": "name object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/name_definition"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success Response",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/name_definition"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Error Response",
+                        "schema": {
+                            "$ref": "#/definitions/error_response"
+                        }
+                    }
+                }
+            }
+        },
+        "/name": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "produces": ["application/json"],
+                "consumes": ["application/json"],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Success Response",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/name_definition"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Error Response",
+                        "schema": {
+                            "$ref": "#/definitions/error_response"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "name_definition": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "age": {
+                    "type": "number"
+                }
+            }
+        },
+        "error_response": {
+            "type": "object",
+            "properties": {
+                "statusCode": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+} 
